@@ -1,10 +1,7 @@
 var initialWordList = ["test", "fox","test", "fox","test", "fox","test", "fox","test", "fox","test", "fox","test", "fox","test", "fox","test", "fox",];
 
 for (var i = 0; i < initialWordList.length; i++) {
-	var newButton = $("<button>")
-		.addClass("gifButton")
-		.text(initialWordList[i]);
-	$("#buttonsRow").append(newButton);
+	addButton(initialWordList[i]);
 }
 
 
@@ -30,9 +27,20 @@ $.ajax({
 		
 		newDiv.append(newP);
 		newDiv.append(newImg);
-		$("#gifRow").append(newDiv);
+		$("#gifContainer").append(newDiv);
 	}
 });
+
+$("#addSubject").on("click",function(){
+
+});
+
+function addButton(s) {
+	var newButton = $("<button>")
+		.addClass("gifButton")
+		.text(s);
+	$("#buttonsRow").append(newButton);
+}
 
 
 // $(document).ready(function() {
