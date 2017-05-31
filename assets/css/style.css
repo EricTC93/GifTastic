@@ -7,3 +7,10 @@
 	margin-right: 10px;
 	margin-bottom: 10px; 
 }
+
+#gifRow > div {
+	float: left;
+	clear: none;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}

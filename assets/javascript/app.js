@@ -18,10 +18,20 @@ $.ajax({
 	url: queryURL,
 	method: 'GET'
 	}).done(function(response) {
-	console.log(response.data[0]);
-	var newImg = new Image();
-	newImg.src = response.data[0].images.fixed_height_small.url;
-	$("#gifRow").append(newImg);
+	console.log(response.data);
+	for (var i = 0; i < response.data.length; i++) {
+		var newDiv = $("<div>");
+
+		var newP = $("<p>");
+		newP.text("rating: " + response.data[i].rating);
+
+		var newImg = new Image();
+		newImg.src = response.data[i].images.fixed_height_small.url;
+		
+		newDiv.append(newP);
+		newDiv.append(newImg);
+		$("#gifRow").append(newDiv);
+	}
 });
 
 
