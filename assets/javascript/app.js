@@ -10,7 +10,8 @@ var queryURL = "http://api.giphy.com/v1/gifs/search?" +
 			"&rating=g" +
 			"&api_key=dc6zaTOxFJmzC";
 			
-var subjectParam = "&q=" + initialWordList[0];
+var subjectParam;
+var gifArr = [];
 
 // $.ajax({
 // 	url: queryURL + subjectParam,
@@ -55,26 +56,50 @@ $(document).on("click", ".gifButton", function() {
 });
 
 function displayGifs(subj) {
+	gifArr = [];
+
 	$.ajax({
 		url: queryURL + subj,
 		method: 'GET'
 		}).done(function(response) {
-		console.log(response.data);
+		// console.log(response.data);
 		for (var i = 0; i < response.data.length; i++) {
 			var newDiv = $("<div>");
 
 			var newP = $("<p>");
 			newP.text("rating: " + response.data[i].rating);
 
-			var newImg = new Image();
-			newImg.src = response.data[i].images.fixed_height_small.url;
+			var newImg = $("<img>")
+				.addClass("gifImg")
+				.attr("src",response.data[i].images.fixed_height_small_still.url);
 			
 			newDiv.append(newP);
 			newDiv.append(newImg);
 			$("#gifContainer").append(newDiv);
+
+			gifArr.push({
+				gif:response.data[i].images.fixed_height_small.url,
+				gifStill: response.data[i].images.fixed_height_small_still.url
+			});
 		}
+		// console.log(gifArr);
 	});
 }
+
+$(document).on("click", ".gifImg", function() {
+	// console.log(this.src);
+	for(var i = 0; i < gifArr.length; i++) {
+		if (this.src === gifArr[i].gifStill) {
+			this.src = gifArr[i].gif;
+			return;
+		}
+
+		else if (this.src === gifArr[i].gif) {
+			this.src = gifArr[i].gifStill;
+			return;
+		}
+	}
+})
 
 // $(document).ready(function() {
 	
