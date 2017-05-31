@@ -8,7 +8,21 @@ for (var i = 0; i < initialWordList.length; i++) {
 }
 
 
+var queryURL = "http://api.giphy.com/v1/gifs/search?" + 
+			"q=" + initialWordList[0] +
+			"&limit=10" + 
+			"&rating=g" +
+			"&api_key=dc6zaTOxFJmzC";
 
+$.ajax({
+	url: queryURL,
+	method: 'GET'
+	}).done(function(response) {
+	console.log(response.data[0]);
+	var newImg = new Image();
+	newImg.src = response.data[0].images.fixed_height_small.url;
+	$("#gifRow").append(newImg);
+});
 
 
 // $(document).ready(function() {
