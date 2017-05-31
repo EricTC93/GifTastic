@@ -31,8 +31,10 @@ $.ajax({
 	}
 });
 
-$("#addSubject").on("click",function(){
-
+$("#addSubject").on("click",function(event){
+	event.preventDefault();
+	var newText = $("#subjectInput").val().trim();
+	addButton(newText);
 });
 
 function addButton(s) {
