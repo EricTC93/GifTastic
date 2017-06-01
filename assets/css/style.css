@@ -2,10 +2,20 @@
 	width: 90%;
 }
 
+.gifButton, #addSubject {
+	border: none;
+	color: #000000;
+}
+
 .gifButton {
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px; 
+}
+
+.selected {
+	background-color: #4d004d;
+	color: #ffffff;
 }
 
 #gifContainer > div {

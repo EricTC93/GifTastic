@@ -7,7 +7,7 @@ for (var i = 0; i < initialWordList.length; i++) {
 
 var queryURL = "http://api.giphy.com/v1/gifs/search?" + 
 			"limit=10" + 
-			"&rating=g" +
+			"&rating=pg" +
 			"&api_key=dc6zaTOxFJmzC";
 			
 var subjectParam;
@@ -50,6 +50,8 @@ function addButton(s) {
 
 $(document).on("click", ".gifButton", function() {
 	$("#gifContainer").empty();
+	$(".gifButton").removeClass("selected");
+	$(this).addClass("selected");
 	// var subject = $(this).text();
 	subjectParam = "&q=" + $(this).text();
 	displayGifs(subjectParam);
