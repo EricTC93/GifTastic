@@ -11,10 +11,61 @@
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px; 
+	border: 1px solid #000000;
 }
 
-.selected {
-	background-color: #4d004d;
+.redButton {
+	background-color: #ff0000;
+	color: #ffffff;
+}
+
+.blueButton {
+	background-color: #0000ff;
+	color: #ffffff;
+}
+
+.greenButton {
+	background-color: #008000;
+	color: #ffffff;
+}
+
+.yellowButton {
+	background-color: #ffff00;
+	color: #000000;
+}
+
+.brownButton {
+	background-color: #4d2600;
+	color: #ffffff;
+}
+
+.greyButton {
+	background-color: #808080;
+	color: #ffffff;
+}
+
+.cyanButton {
+	background-color: #00ffff;
+	color: #000000;
+}
+
+.purpleButton {
+	background-color: #800080;
+	color: #ffffff;
+}
+
+.orangeButton {
+	background-color: #ffa500;
+	color: #ffffff;
+}
+
+.pinkButton {
+	background-color: #ffc0cb;
+	color: #000000;
+}
+
+.selectedButton {
+	background-color: #000000;
 	color: #ffffff;
 }
 

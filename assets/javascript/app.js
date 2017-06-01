@@ -1,12 +1,15 @@
-var initialWordList = ["test", "fox", "dinosaur"];
+var wordList = [ "fox","dinosaur","rabbit","dragon","snake","dog","cat","hedgehog","hawk","alligator","squirrel","bat","rooster","racoon"];
+var buttonColors = ["red","blue","green","yellow","brown","grey","cyan","purple","orange","pink"];
+var gifsPerButton = 10;
 
-for (var i = 0; i < initialWordList.length; i++) {
-	addButton(initialWordList[i]);
+console.log();
+
+for (var i = 0; i < wordList.length; i++) {
+	addButton(wordList[i]);
 }
 
-
 var queryURL = "http://api.giphy.com/v1/gifs/search?" + 
-			"limit=10" + 
+			"limit=" + gifsPerButton + 
 			"&rating=pg" +
 			"&api_key=dc6zaTOxFJmzC";
 			
@@ -36,22 +39,26 @@ var gifArr = [];
 // $("#gifContainer").empty();
 
 $("#addSubject").on("click",function(event){
-	event.preventDefault();
+	event.preventDefault()
 	var newText = $("#subjectInput").val().trim();
-	addButton(newText);
+	if (wordList.indexOf(newText) === -1) {
+		wordList.push(newText);
+		addButton(newText);
+	}
 });
 
 function addButton(s) {
 	var newButton = $("<button>")
 		.addClass("gifButton")
+		.addClass(buttonColors[(wordList.indexOf(s))%10] + "Button")
 		.text(s);
 	$("#buttonsRow").append(newButton);
 }
 
 $(document).on("click", ".gifButton", function() {
 	$("#gifContainer").empty();
-	$(".gifButton").removeClass("selected");
-	$(this).addClass("selected");
+	$(".gifButton").removeClass("selectedButton");
+	$(this).addClass("selectedButton");
 	// var subject = $(this).text();
 	subjectParam = "&q=" + $(this).text();
 	displayGifs(subjectParam);
