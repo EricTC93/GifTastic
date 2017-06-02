@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var buttonColors = ["red","blue","green","yellow","brown","grey","cyan","purple","orange","pink"];
 	var gifsPerButton = 10;
 
-	var queryURL = "http://api.giphy.com/v1/gifs/search?" + 
+	var queryURL = "https://api.giphy.com/v1/gifs/search?" + 
 				"limit=" + gifsPerButton + 
 				"&rating=pg" +
 				"&api_key=dc6zaTOxFJmzC";
