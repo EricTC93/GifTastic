@@ -1,16 +1,18 @@
 $(document).ready(function() {	
 
 	// Declaring Variables
-	var wordList = [ "fox","dinosaur","rabbit","dragon","snake","dog","cat","hedgehog","hawk","alligator","bat","squirrel","rooster","racoon","turtle","owl","giraffe","horse","camel","panther","lion","kaiju"];
-	var buttonColors = ["red","blue","green","yellow","brown","grey","cyan","purple","orange","pink"];
+	var wordList = [ "fox","dinosaur","rabbit","dragon","snake","dog","cat","hedgehog","hawk","crocodile",
+					"bat","squirrel","rooster","racoon","turtle","owl","giraffe","horse","camel","panther",
+					"lion","kangaroo","bear","sheep","otter","mouse","alligator","kaiju"];
+	var colorList = ["red","blue","green","yellow","brown","grey","cyan","purple","orange","pink"];
 	var gifsPerButton = 10;
 
 	var queryURL = "https://api.giphy.com/v1/gifs/search?" + 
 				"limit=" + gifsPerButton + 
 				"&rating=pg" +
-				"&api_key=dc6zaTOxFJmzC";
+				"&api_key=dc6zaTOxFJmzC" + 
+				"&q=";
 				
-	var subjectParam;
 	var gifArr = [];
 
 	// Creates initial word list
@@ -32,11 +34,12 @@ $(document).ready(function() {
 	});
 
 	// Adds button to the button row based on the text value s
-	function addButton(s) {
+	function addButton(subj) {
+		var buttonColor = colorList[(wordList.indexOf(subj))%10];
 		var newButton = $("<button>")
 			.addClass("gifButton")
-			.addClass(buttonColors[(wordList.indexOf(s))%10] + "Button")
-			.text(s);
+			.addClass( buttonColor + "Button")
+			.text(subj);
 		$("#buttonsRow").append(newButton);
 	}
 
@@ -45,13 +48,14 @@ $(document).ready(function() {
 		$("#gifContainer").empty();
 		$(".gifButton").removeClass("selectedButton");
 		$(this).addClass("selectedButton");
-		subjectParam = "&q=" + $(this).text();
-		displayGifs(subjectParam);
+		var subject = $(this).text();
+		displayGifs(subject);
 	});
 
 	// Retrieves gifs from api and displays it to the user
 	function displayGifs(subj) {
 		gifArr = [];
+		var borderColor = colorList[(wordList.indexOf(subj))%10];
 
 		$.ajax({
 			url: queryURL + subj,
@@ -59,6 +63,8 @@ $(document).ready(function() {
 			}).done(function(response) {
 			for (var i = 0; i < response.data.length; i++) {
 				var newDiv = $("<div>");
+				newDiv.addClass("gifDiv");
+				newDiv.css("border","7px groove " + borderColor);
 
 				var newP = $("<p>");
 				newP.text("rating: " + response.data[i].rating);

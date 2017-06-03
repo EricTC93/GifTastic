@@ -75,7 +75,7 @@ form {
 	margin-left: 5px;
 }
 
-#gifContainer > div {
+.gifDiv {
 	float: left;
 	clear: none;
 	margin-left: 5px;
