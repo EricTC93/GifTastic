@@ -1,7 +1,7 @@
 $(document).ready(function() {	
 
 	// Declaring Variables
-	var wordList = [ "fox","dinosaur","rabbit","dragon","snake","dog","cat","hedgehog","hawk","alligator","squirrel","bat","rooster","racoon"];
+	var wordList = [ "fox","dinosaur","rabbit","dragon","snake","dog","cat","hedgehog","hawk","alligator","bat","squirrel","rooster","racoon","turtle","owl","giraffe","horse","camel","panther","lion","kaiju"];
 	var buttonColors = ["red","blue","green","yellow","brown","grey","cyan","purple","orange","pink"];
 	var gifsPerButton = 10;
 
@@ -22,9 +22,10 @@ $(document).ready(function() {
 	$("#addSubject").on("click",function(event){
 		event.preventDefault()
 		var newText = $("#subjectInput").val().trim();
+		$("#subjectInput").val("");
 
 		// Checks for repeat buttons
-		if (wordList.indexOf(newText) === -1) {
+		if (wordList.indexOf(newText) === -1 && newText !== "") {
 			wordList.push(newText);
 			addButton(newText);
 		}
