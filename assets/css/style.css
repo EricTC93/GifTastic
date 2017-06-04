@@ -73,6 +73,7 @@
 
 form {
 	margin-left: 5px;
+	margin-bottom: 10px;
 }
 
 .gifDiv {
@@ -81,4 +82,12 @@ form {
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 10px;
+}
+
+.gifDiv > p {
+	margin: 0px;
+}
+
+.gifImg {
+	margin: 10px;
 }
