@@ -1,7 +1,7 @@
 $(document).ready(function() {	
 
 	// Declaring Variables
-	var wordList = [ "fox","dinosaur","rabbit","dragon","snake","dog","cat","hedgehog","hawk","crocodile",
+	var topics = [ "fox","dinosaur","rabbit","dragon","snake","dog","cat","hedgehog","hawk","crocodile",
 					"bat","squirrel","rooster","racoon","turtle","owl","giraffe","horse","camel","panther",
 					"lion","kangaroo","bear","sheep","otter","mouse","alligator","kaiju"];
 	var colorList = ["red","blue","green","yellow","brown","grey","cyan","purple","orange","pink"];
@@ -16,8 +16,8 @@ $(document).ready(function() {
 	var gifArr = [];
 
 	// Creates initial word list
-	for (var i = 0; i < wordList.length; i++) {
-		addButton(wordList[i]);
+	for (var i = 0; i < topics.length; i++) {
+		addButton(topics[i]);
 	}
 
 	// Clicking the submit button adds the current text input to the button list
@@ -27,15 +27,15 @@ $(document).ready(function() {
 		$("#subjectInput").val("");
 
 		// Checks for repeat buttons
-		if (wordList.indexOf(newText) === -1 && newText !== "") {
-			wordList.push(newText);
+		if (topics.indexOf(newText) === -1 && newText !== "") {
+			topics.push(newText);
 			addButton(newText);
 		}
 	});
 
 	// Adds button to the button row based on the text value s
 	function addButton(subj) {
-		var buttonColor = colorList[(wordList.indexOf(subj))%10];
+		var buttonColor = colorList[(topics.indexOf(subj))%10];
 		var newButton = $("<button>")
 			.addClass("gifButton")
 			.addClass( buttonColor + "Button")
@@ -55,7 +55,7 @@ $(document).ready(function() {
 	// Retrieves gifs from api and displays it to the user
 	function displayGifs(subj) {
 		gifArr = [];
-		var borderColor = colorList[(wordList.indexOf(subj))%10];
+		var borderColor = colorList[(topics.indexOf(subj))%10];
 
 		$.ajax({
 			url: queryURL + subj,
